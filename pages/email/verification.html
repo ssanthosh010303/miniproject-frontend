@@ -19,25 +19,26 @@
     sizes="192x192" href="/assets/favicons/android-chrome-512x512.png">
 </head>
 <body>
-  <main class="my-3 mx-auto" style="max-width: 500px;">
-    <div class="bg-body border m-2 p-3 rounded">
-      <h2 class="text-center">Forgot Password</h2>
-      <form>
-        <div class="mb-3">
-          <b><label for="email-input" class="form-label">Email Address</label></b>
-          <input type="email" class="form-control" id="email-input"
-            placeholder="name@example.com">
-        </div>
-        <button class="btn btn-primary w-100 text-center mb-3" type="submit">
-          Send Email Request
-        </button>
-      </form>
-      <a class="d-block text-end" href="/pages/log-in.html" style="text-decoration: none;">
-        Log-in
-      </a>
+  <main class="m-2 mx-auto p-3" style="max-width: 600px;">
+    <div class="bg-body border mb-3 p-3 rounded text-center">
+      <h2>Email Verification</h2>
+      <p>
+        <b>Status: </b>
+        <span id="verification-status" class="text-warning">
+          Verifying...
+        </span>
+      </p>
+      <p class="mb-0 text-muted">
+        If the verification is successful, please proceed to the
+        <a href="/" style="text-decoration: none">home</a> page. If the
+        verification has failed, it is likely due to expiration of the link
+        or the link is invalid. Please re-generate the link when logging-in.
+      </p>
     </div>
   </main>
+  <div id="toast-container" class="toast-container top-0 end-0 p-3">
+  </div>
   <script src="/js/utils.js"></script>
-  <script src="/js/forgot-password.js"></script>
+  <script src="/js/email/verification.js"></script>
 </body>
 </html>
