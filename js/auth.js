@@ -59,13 +59,7 @@ function setNavbar(isLoggedIn) {
 }
 
 function redirectTo(page) {
-    switch (page) {
-        case "log-in":
-            window.location.href = "/pages/log-in.html";
-            break;
-        case "unauthorized":
-            window.location.href = "/";
-    }
+    window.location.href = page;
 }
 
 function generateHeaderJwt() {
@@ -84,17 +78,32 @@ function generateHeaderBasicAuth(username, password) {
     };
 }
 
-async function refreshToken() {
+async function refreshAccessToken() {
+    const response = await fetch(
+        "http://192.168.0.106:5064/api/jwt/refresh", {
+            method: "POST",
+            headers: generateHeaderJwt(getJwt(isRefreshToken = true)["refreshToken"]),
+        }
+    );
 
+    const data = await response.json();
+
+    console.log(data);
 }
 
 function logOut() {
-
+    if (isLoggedIn()) {
+        clearJwt();
+        redirectTo("/");
+    }
 }
 
 function handleUnauthorizedRequest() {
-    refreshToken()
+    refreshAccessToken()
     .then(refreshedAccessToken => {
         setJwt(accessToken = refreshedAccessToken)
+    })
+    .catch(function() {
+        logOut();
     });
 }

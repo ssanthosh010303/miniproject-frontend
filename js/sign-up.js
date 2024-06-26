@@ -27,7 +27,6 @@ async function sendFormData(formData) {
                 body: JSON.stringify(formData),
             }
         );
-        const data = await response.json();
 
         if (response.status == 200) {
             showNotification(
@@ -36,7 +35,7 @@ async function sendFormData(formData) {
                 "success"
             );
 
-            return data;
+            return await response.json();
         }
 
         if (response.status == 500)

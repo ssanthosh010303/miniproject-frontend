@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <title>Movie Booking System</title>
@@ -18,19 +18,18 @@
   <link rel="icon"
     sizes="192x192" href="/assets/favicons/android-chrome-512x512.png">
 </head>
-<body>
+<body class="bg-black">
   <main class="my-3 mx-auto" style="max-width: 500px;">
     <div class="bg-body border m-2 p-3 rounded">
       <h2 class="text-center">Log-in</h2>
       <form>
         <div class="mb-3">
-          <b><label for="email-input" class="form-label">Email Address</label></b>
-          <input type="email" class="form-control" id="email-input"
-            placeholder="name@example.com">
+          <b><label for="username-input" class="form-label">Username</label></b>
+          <input type="text" class="form-control" name="username" id="username-input" required>
         </div>
         <div class="mb-3">
           <b><label for="password-input" class="form-label">Password</label></b>
-          <input type="password" class="form-control" id="password-input">
+          <input type="password" class="form-control" name="password" id="password-input" required>
         </div>
         <button class="btn btn-primary w-100 text-center mb-3" type="submit">
           Log-in
@@ -46,7 +45,10 @@
       </div>
     </div>
   </main>
-  <script src="/js/log-in.js"></script>
+  <div id="toast-container" class="toast-container top-0 end-0 p-3">
+  </div>
   <script src="/js/utils.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/log-in.js"></script>
 </body>
 </html>
